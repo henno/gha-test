@@ -30,5 +30,6 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
+          head -3 ~/.ssh/id_rsa
+          tail -3 ~/.ssh/id_rsa
           ssh github@test.diarainfra.com "hostname"
