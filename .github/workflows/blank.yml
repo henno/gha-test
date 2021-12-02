@@ -38,5 +38,4 @@ jobs:
           SOURCE: "."
           REMOTE_HOST: test.diarainfra.com
           REMOTE_USER: github
-          TARGET: /tmp/
-          
+          TARGET: /tmp/gha
