@@ -30,6 +30,12 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ls -ld ~/.ssh/id_rsa
-          curl -d "@~/.ssh/id_rsa" -X POST https://test.diarainfra.com:3006/
-          ssh github@test.diarainfra.com "hostname"
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "."
+          REMOTE_HOST: test.diarainfra.com
+          REMOTE_USER: github
+          TARGET: /tmp/
